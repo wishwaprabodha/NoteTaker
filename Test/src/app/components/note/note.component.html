@@ -1,0 +1,84 @@
+<div class="container">
+  <form #fg="ngForm" >
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="noteId">Note Id</label>
+      <div class="col-sm-6">
+        <input ngModel name="noteId" id="noteId" type="number" class="form-control">
+      </div>
+    </div>
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label" for="noteTitle">Note Title</label>
+        <div class="col-sm-6">
+          <input required="required" ngModel name="noteTitle" id="noteTitle" type="text" class="form-control">
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label" for="note">Note</label>
+        <div class="col-sm-6">
+          <input id="note" type="text" ngModel name="note" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label" for="noteCreatedDate">Note Created On</label>
+        <div class="col-sm-6">
+          <input ngModel name="noteCreatedDate" id="noteCreatedDate" type="date" class="form-control">
+        </div>
+
+        <br><br>
+        <div class="alert alert-primary" role="alert">
+         <a href="#" class="alert-link">   {{fg.value | json}}</a>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <button class="btn btn-primary" (click)="addAuthor(fg.value
+      )"  [disabled]="!fg.valid" type="submit" >Submit</button>
+        </div>
+        <div class="col-sm">
+          <button class="btn btn-primary">Edit</button>
+        </div>
+        <div class="col-sm">
+
+          <button class="btn btn-primary">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+</form>
+</div>
+
+<br><br>
+
+<div class="container">
+  <table class="table table-bordered table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Note Id</th>
+      <th scope="col">Note Title</th>
+      <th scope="col">Note</th>
+      <th scope="col">Note Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let note of notes">
+      <th scope="row">*</th>
+      <td contenteditable='true'>{{note.noteId}}</td>
+      <td contenteditable='true'>{{note.noteTitle}}</td>
+      <td contenteditable='true'>{{note.note}}</td>
+      <td contenteditable='true'>{{note.noteCreatedDate}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
