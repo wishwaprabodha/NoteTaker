@@ -13,7 +13,7 @@ noteRouter.get('/', (req, res) => {
 noteRouter.get('/:noteId', function (req, res) {
   const noteId = req.params.noteId;
   const query = 'select * from Note where noteId=?';
-  con.query(query, noteId, function (err, result) {
+  noteConn.query(query, noteId, function (err, result) {
     res.send(result);
   });
 });
@@ -26,7 +26,7 @@ noteRouter.post('/', function (req, res) {
   let note = req.body.note;
   let noteCreatedDate = req.body.noteCreatedDate;
   let query = "insert into Note(noteId,noteTitle,note,noteCreatedDate) values ('" + noteId + "',  '" + noteTitle + "',  '" + note + "','" + noteCreatedDate + "')";
-  con.query(query, function (err, result) {
+  noteConn.query(query, function (err, result) {
     if (err) throw err;
     res.send(result);
   });
@@ -41,7 +41,7 @@ noteRouter.put('/:noteId', function (req, res) {
     noteCreatedDate: req.body.noteCreatedDate
   };
   let query = "UPDATE Note SET noteTitle ='" + noteObj.noteTitle + "', note='" + noteObj.note + "',noteCreatedDate= '" + noteObj.noteCreatedDate + "' WHERE noteId ='" + noteId + "'";
-  con.query(query,function (err, result) {
+  noteConn.query(query,function (err, result) {
     console.log(query);
     if (err) throw err;
     res.send(result);
@@ -51,7 +51,7 @@ noteRouter.put('/:noteId', function (req, res) {
 noteRouter.delete('/:noteId', function (req, res) {
   const noteId=req.params.noteId;
   let query = "DELETE FROM Note WHERE noteId ='" + noteId + "'";
-  con.query(query,function (err, result) {
+  noteConn.query(query,function (err, result) {
     console.log(query);
     if (err) throw err;
     res.send(result);
