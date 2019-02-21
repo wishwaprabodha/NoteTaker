@@ -21,23 +21,28 @@ export class NoteComponent implements OnInit {
   }
 
   addNotes(fg) {
-    this.http.post('http://localhost:8000/note', fg.value)
+    this.http.post('http://localhost:8000/note', fg)
       .subscribe(res => {
         console.log(res);
       });
   }
-  updateNotes(fg) {
-    this.http.put('http://localhost:8000/note',
-      {
-        'name': 'NewCustomer001',
-        'email': 'newcustomer001@email.com',
-        'tel': '0000252525'
-      }).subscribe(data => {
+
+  updateNotes(fg, NoteId) {
+    this.http.put('http://localhost:8000/note/' + NoteId, fg).subscribe(data => {
           console.log('PUT Request is successful ', data);
         },
         error => {
           console.log(' Error ', error);
         });
+  }
+
+  deleteNotes(NoteId) {
+    this.http.delete('http://localhost:8000/note/' + NoteId).subscribe(data => {
+        console.log('DELETE Request is successful ', data);
+      },
+      error => {
+        console.log(' Error ', error);
+      });
   }
   ngOnInit() {
 

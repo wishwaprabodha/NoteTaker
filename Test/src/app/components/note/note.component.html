@@ -30,7 +30,7 @@
 
         <br><br>
         <div class="alert alert-primary" role="alert">
-         <a href="#" class="alert-link">   {{fg.value | json}}</a>
+         <a href="#" class="alert-link">   {{fg.value.noteId | json}}</a>
         </div>
 
     </div>
@@ -39,15 +39,14 @@
     <div class="container">
       <div class="row">
         <div class="col-sm">
-          <button class="btn btn-primary" (click)="addAuthor(fg.value
-      )"  [disabled]="!fg.valid" type="submit" >Submit</button>
+          <button class="btn btn-primary" (click)="addNotes(fg.value)"   type="submit" >Submit</button>
         </div>
         <div class="col-sm">
-          <button class="btn btn-primary">Edit</button>
+          <button class="btn btn-primary" (click)="updateNotes(fg.value,fg.value.noteId)"   type="submit">Edit</button>
         </div>
         <div class="col-sm">
 
-          <button class="btn btn-primary">Delete</button>
+          <button class="btn btn-primary" (click)="deleteNotes(fg.value.noteId)"   type="submit">Delete</button>
         </div>
       </div>
     </div>
@@ -72,10 +71,10 @@
     <tbody>
     <tr *ngFor="let note of notes">
       <th scope="row">*</th>
-      <td contenteditable='true'>{{note.noteId}}</td>
-      <td contenteditable='true'>{{note.noteTitle}}</td>
-      <td contenteditable='true'>{{note.note}}</td>
-      <td contenteditable='true'>{{note.noteCreatedDate}}</td>
+      <td >{{note.noteId}}</td>
+      <td >{{note.noteTitle}}</td>
+      <td >{{note.note}}</td>
+      <td >{{note.noteCreatedDate}}</td>
     </tr>
     </tbody>
   </table>
