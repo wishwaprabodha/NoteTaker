@@ -4,8 +4,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const noteRouter = require('./routes/notes');
-const userRouter = require('./routes/users');
+const noteRouter = require('./routes/noteRoute');
 
 const app = express();
 const port = 8000;
