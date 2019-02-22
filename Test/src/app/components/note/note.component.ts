@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class NoteComponent implements OnInit {
   notes: any[] = [];
   constructor(public http: HttpClient) {
-    this.viewNotes();
+
   }
 
   viewNotes() {
@@ -17,8 +17,21 @@ export class NoteComponent implements OnInit {
       .subscribe((res: any[]) => {
         console.log(res);
         this.notes = res;
+      }, error => {
+        console.log(' Error ', error);
       });
   }
+
+  searchNotes(NoteId) {
+    this.http.get<any>('http://localhost:8000/note/' + NoteId).subscribe((res: any[]) => {
+        console.log('GET Request is successful ', res);
+        this.notes = res;
+      },
+      error => {
+        console.log(' Error ', error);
+      });
+  }
+
 
   addNotes(fg) {
     this.http.post('http://localhost:8000/note', fg)

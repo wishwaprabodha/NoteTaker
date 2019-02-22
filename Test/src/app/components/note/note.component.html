@@ -38,16 +38,27 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-sm">
-          <button class="btn btn-primary" (click)="addNotes(fg.value)"   type="submit" >Submit</button>
-        </div>
-        <div class="col-sm">
-          <button class="btn btn-primary" (click)="updateNotes(fg.value,fg.value.noteId)"   type="submit">Edit</button>
-        </div>
-        <div class="col-sm">
 
+        <div class="col-sm">
+          <button class="btn btn-primary" (click)="viewNotes()"   type="submit" >View All</button>
+        </div>
+
+        <div class="col-sm">
+          <button class="btn btn-primary" (click)="addNotes(fg.value)"   type="submit" >Add</button>
+        </div>
+
+        <div class="col-sm">
+          <button class="btn btn-primary" (click)="searchNotes(fg.value.noteId)"   type="submit">Search</button>
+        </div>
+
+        <div class="col-sm">
+          <button class="btn btn-primary" (click)="updateNotes(fg.value,fg.value.noteId)"   type="submit">Update</button>
+        </div>
+
+        <div class="col-sm">
           <button class="btn btn-primary" (click)="deleteNotes(fg.value.noteId)"   type="submit">Delete</button>
         </div>
+
       </div>
     </div>
 
