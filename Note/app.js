@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -17,7 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/note', noteRouter);
-app.use('/user', userRouter);
+
 
 app.listen(port, () => {
   console.log("Server up on PORT:" + port);
